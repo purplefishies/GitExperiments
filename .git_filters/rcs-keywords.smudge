@@ -37,13 +37,16 @@ $date = $1;
 $rev =~ /^commit (.*)$/m;
 $ident = $1;
 
+$ver=`git describe --always --abbrev=1`;
+
 while (<STDIN>) {
     s/\$Date[^\$]*\$/\$Date:   $date \$/;
     s/\$Author[^\$]*\$/\$Author: $author \$/;
     s/\$Id[^\$]*\$/\$Id: $filename | $date | $name \$/;
     s/\$File[^\$]*\$/\$File:   $filename \$/;
     s/\$Source[^\$]*\$/\$Source: $path \$/;
-	s/\$Revision[^\$]*\$/\$Revision: $ident \$/;
+    s/\$Revision[^\$]*\$/\$Revision: $ident \$/;
+    s/\$Version[^\$]*\$/\$Version: $ver \$/;
 } continue {
     print or die "-p destination: $!\n";
 }
