@@ -1,5 +1,6 @@
 /* $Date$ */
 
+int foo;
 #include <stdio.h>
 
 int main(void)
