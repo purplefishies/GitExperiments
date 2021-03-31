@@ -38,6 +38,7 @@ $rev =~ /^commit (.*)$/m;
 $ident = $1;
 
 $ver=`git describe --always --abbrev=1`;
+chomp($ver);
 
 while (<STDIN>) {
     s/\$Date[^\$]*\$/\$Date:   $date \$/;
